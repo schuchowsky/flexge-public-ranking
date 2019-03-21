@@ -71,7 +71,7 @@ const App = () => {
           style={{
             display: "flex",
             justifyContent: "space-between",
-            maxWidth: 500,
+            maxWidth: 600,
             margin: "auto"
           }}
         >
