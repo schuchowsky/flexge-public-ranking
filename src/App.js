@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import "./App.css";
 import Podium from "./Podium";
+import logo from "./logo.png";
+import RankingPosition from "./RankingPosition";
 
 class App extends Component {
   render() {
@@ -66,7 +68,30 @@ class App extends Component {
             padding: 50
           }}
         >
-          2
+          <div style={{ textAlign: "right" }}>
+            <img src={logo} alt="logo-flexge" style={{ height: 60 }} />
+          </div>
+          <div style={{ marginTop: 20 }}>
+            <RankingPosition position={4} name="Camilinha" points="865" />
+          </div>
+          <div style={{ marginTop: 20 }}>
+            <RankingPosition position={5} name="Camilinha" points="863" />
+          </div>
+          <div style={{ marginTop: 20 }}>
+            <RankingPosition position={6} name="Camilinha" points="862" />
+          </div>
+          <div style={{ marginTop: 20 }}>
+            <RankingPosition position={7} name="Camilinha" points="861" />
+          </div>
+          <div style={{ marginTop: 20 }}>
+            <RankingPosition position={8} name="Camilinha" points="860" />
+          </div>
+          <div style={{ marginTop: 20 }}>
+            <RankingPosition position={9} name="Camilinha" points="700" />
+          </div>
+          <div style={{ marginTop: 20 }}>
+            <RankingPosition position={10} name="Camilinha" points="600" />
+          </div>
         </div>
       </div>
     );
