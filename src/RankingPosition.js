@@ -36,9 +36,19 @@ const RankingPosition = ({ position, name, picture, points }) => (
           width: 50,
           borderRadius: "50%",
           marginRight: 10,
-          backgroundColor: "#CCCCCC"
+          backgroundColor: "#CCCCCC",
+          overflow: "hidden",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center"
         }}
-      />
+      >
+        <img
+          alt="user-img"
+          src={`https://assets.flexge.com/${picture}`}
+          style={{ height: 50, width: 50 }}
+        />
+      </div>
       {name}
       <div
         style={{

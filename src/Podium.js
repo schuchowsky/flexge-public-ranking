@@ -7,7 +7,7 @@ const getColorByPosition = position =>
     3: "#D69B23"
   }[position]);
 
-const Podium = ({ position, name, points }) => (
+const Podium = ({ position, name, points, picture }) => (
   <div style={{ marginTop: position !== 1 ? 100 : 0, textAlign: "center" }}>
     {position === 1 && (
       <div
@@ -29,13 +29,26 @@ const Podium = ({ position, name, points }) => (
     <div
       style={{
         borderRadius: "50%",
-        border: `2px solid ${getColorByPosition(position)}`,
+        border: `3px solid ${getColorByPosition(position)}`,
         height: position === 1 ? 130 : 100,
         width: position === 1 ? 130 : 100,
         background: "#CCCCCC",
-        margin: "auto"
+        margin: "auto",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        overflow: "hidden"
       }}
-    />
+    >
+      <img
+        alt="user-img"
+        src={`https://assets.flexge.com/${picture}`}
+        style={{
+          height: position === 1 ? 130 : 100,
+          width: position === 1 ? 130 : 100
+        }}
+      />
+    </div>
     <div
       style={{
         textAlign: "center",

@@ -4,25 +4,34 @@ import Podium from "./Podium";
 import logo from "./logo.png";
 import RankingPosition from "./RankingPosition";
 import axios from "axios";
+import get from "lodash/get";
 
 const App = () => {
   const [ranking, setRanking] = useState([]);
   const [isFetching, setFetching] = useState(false);
   const [countdown, setCountdown] = useState(10);
+  const fetch = () => {
+    setFetching(true);
+    axios
+      .get(
+        "https://api.flexge.com/public/reports/schools/Colégio do Salvador/ranking?from=2019-03-01&to=2019-03-30",
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "test"
+          }
+        }
+      )
+      .then(result => {
+        setRanking(result.data);
+        setFetching(false);
+      });
+  };
   useEffect(() => {
-    console.log("countdonw", countdown);
     if (!isFetching) {
       if (countdown <= 0) {
         setCountdown(10);
-        setFetching(true);
-        axios
-          .get(
-            `https://api.flexge.com/public/reports/schools/Technos Vila A/ranking?from=2019-03-01&to=2019-03-30`
-          )
-          .then(result => {
-            console.log("result", result);
-            setFetching(false);
-          });
+        fetch();
         return;
       }
       const timeout = setTimeout(() => {
@@ -31,6 +40,10 @@ const App = () => {
       return () => clearTimeout(timeout);
     }
   }, [isFetching, countdown]);
+
+  useEffect(() => {
+    fetch();
+  }, []);
   return (
     <div style={{ display: "flex", height: "100vh" }}>
       <div
@@ -62,9 +75,24 @@ const App = () => {
             margin: "auto"
           }}
         >
-          <Podium position={2} name="Marcello" points="1.250" />
-          <Podium position={1} name="Felipe" points="2.250" />
-          <Podium position={3} name="Juciel" points="1.050" />
+          <Podium
+            position={get(ranking, "[1].position")}
+            name={get(ranking, "[1].name")}
+            points={get(ranking, "[1].points")}
+            picture={get(ranking, "[1].profilePicture")}
+          />
+          <Podium
+            position={get(ranking, "[0].position")}
+            name={get(ranking, "[0].name")}
+            points={get(ranking, "[0].points")}
+            picture={get(ranking, "[0].profilePicture")}
+          />
+          <Podium
+            position={get(ranking, "[2].position")}
+            name={get(ranking, "[2].name")}
+            points={get(ranking, "[2].points")}
+            picture={get(ranking, "[2].profilePicture")}
+          />
         </div>
         <div
           style={{
@@ -96,27 +124,16 @@ const App = () => {
         <div style={{ textAlign: "right" }}>
           <img src={logo} alt="logo-flexge" style={{ height: 60 }} />
         </div>
-        <div style={{ marginTop: 20 }}>
-          <RankingPosition position={4} name="Camilinha" points="865" />
-        </div>
-        <div style={{ marginTop: 20 }}>
-          <RankingPosition position={5} name="Camilinha" points="863" />
-        </div>
-        <div style={{ marginTop: 20 }}>
-          <RankingPosition position={6} name="Camilinha" points="862" />
-        </div>
-        <div style={{ marginTop: 20 }}>
-          <RankingPosition position={7} name="Camilinha" points="861" />
-        </div>
-        <div style={{ marginTop: 20 }}>
-          <RankingPosition position={8} name="Camilinha" points="860" />
-        </div>
-        <div style={{ marginTop: 20 }}>
-          <RankingPosition position={9} name="Camilinha" points="700" />
-        </div>
-        <div style={{ marginTop: 20 }}>
-          <RankingPosition position={10} name="Camilinha" points="600" />
-        </div>
+        {[3, 4, 5, 6, 7, 8, 9].map(index => (
+          <div style={{ marginTop: 20 }}>
+            <RankingPosition
+              position={get(ranking, `[${index}].position`)}
+              name={get(ranking, `[${index}].name`)}
+              points={get(ranking, `[${index}].points`)}
+              picture={get(ranking, `[${index}].profilePicture`)}
+            />
+          </div>
+        ))}
         <div style={{ marginTop: 20 }}>
           {isFetching ? (
             <i className="fa fa-spinner fa-spin" />
