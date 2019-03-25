@@ -71,7 +71,7 @@ const App = () => {
           style={{
             display: "flex",
             justifyContent: "space-between",
-            maxWidth: 600,
+            maxWidth: 800,
             margin: "auto"
           }}
         >
@@ -108,7 +108,7 @@ const App = () => {
             alignItems: "center",
             justifyContent: "center",
             fontWeight: "bold",
-            fontSize: 18
+            fontSize: 40
           }}
         >
           Solicite sua senha e concorra a prêmios!
@@ -125,7 +125,7 @@ const App = () => {
           <img src={logo} alt="logo-flexge" style={{ height: 60 }} />
         </div>
         {[3, 4, 5, 6, 7, 8, 9].map(index => (
-          <div style={{ marginTop: 20 }}>
+          <div style={{ marginTop: 30 }} key={index}>
             <RankingPosition
               position={get(ranking, `[${index}].position`)}
               name={get(ranking, `[${index}].name`)}
@@ -134,7 +134,7 @@ const App = () => {
             />
           </div>
         ))}
-        <div style={{ marginTop: 20 }}>
+        <div style={{ marginTop: 30, color: "#cacaca" }}>
           {isFetching ? (
             <i className="fa fa-spinner fa-spin" />
           ) : (

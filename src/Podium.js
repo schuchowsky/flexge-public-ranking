@@ -30,8 +30,8 @@ const Podium = ({ position, name, points, picture }) => (
       style={{
         borderRadius: "50%",
         border: `3px solid ${getColorByPosition(position)}`,
-        height: position === 1 ? 130 : 100,
-        width: position === 1 ? 130 : 100,
+        height: position === 1 ? 160 : 130,
+        width: position === 1 ? 160 : 130,
         background: "#CCCCCC",
         margin: "auto",
         display: "flex",
@@ -40,20 +40,24 @@ const Podium = ({ position, name, points, picture }) => (
         overflow: "hidden"
       }}
     >
-      <img
-        alt="user-img"
-        src={`https://assets.flexge.com/${picture}`}
-        style={{
-          height: position === 1 ? 130 : 100,
-          width: position === 1 ? 130 : 100
-        }}
-      />
+      {picture ? (
+        <img
+          alt="user-img"
+          src={`https://assets.flexge.com/${picture}`}
+          style={{
+            height: position === 1 ? 160 : 130,
+            width: position === 1 ? 160 : 130
+          }}
+        />
+      ) : (
+        <i className="fa fa-user" style={{ fontSize: 70 }} />
+      )}
     </div>
     <div
       style={{
         textAlign: "center",
         margin: "15px 0",
-        fontSize: 20,
+        fontSize: 46,
         fontWeight: "bold",
         color: getColorByPosition(position)
       }}
@@ -68,7 +72,7 @@ const Podium = ({ position, name, points, picture }) => (
         textAlign: "center",
         margin: "15px 0",
         color: "#fff",
-        fontSize: 20,
+        fontSize: 22,
         fontWeight: "bold"
       }}
     >

@@ -15,8 +15,12 @@ const RankingPosition = ({ position, name, picture, points }) => (
         fontSize: 22
       }}
     >
-      {position}
-      <sup>th</sup>
+      <div>
+        {position}
+        <sup>
+          <small>th</small>
+        </sup>
+      </div>
     </div>
     <div
       style={{
@@ -43,19 +47,30 @@ const RankingPosition = ({ position, name, picture, points }) => (
           justifyContent: "center"
         }}
       >
-        <img
-          alt="user-img"
-          src={`https://assets.flexge.com/${picture}`}
-          style={{ height: 50, width: 50 }}
-        />
+        {picture ? (
+          <img
+            alt="user-img"
+            src={`https://assets.flexge.com/${picture}`}
+            style={{ height: 50, width: 50 }}
+          />
+        ) : (
+          <i className="fa fa-user" style={{ fontSize: 25 }} />
+        )}
       </div>
-      {name}
+      <div
+        style={{
+          fontSize: 20
+        }}
+      >
+        {name}
+      </div>
       <div
         style={{
           flex: 1,
           textAlign: "right",
           justifySelf: "flex-end",
-          color: "#059688"
+          color: "#059688",
+          fontSize: 20
         }}
       >
         {points} pontos
