@@ -15,7 +15,8 @@ const Podium = ({ position, name, points, picture }) => (
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          color: getColorByPosition(position)
+          color: getColorByPosition(position),
+          marginBottom: 15
         }}
       >
         <i className="fa fa-star" style={{ fontSize: 20, marginRight: 10 }} />
@@ -39,6 +40,7 @@ const Podium = ({ position, name, points, picture }) => (
         justifyContent: "center",
         overflow: "hidden"
       }}
+      className="avatar"
     >
       {picture ? (
         <img
@@ -46,7 +48,8 @@ const Podium = ({ position, name, points, picture }) => (
           src={`https://assets.flexge.com/${picture}`}
           style={{
             height: position === 1 ? 160 : 130,
-            width: position === 1 ? 160 : 130
+            width: position === 1 ? 160 : 130,
+            boxShadow: "0 5px 15px 0px rgba(0, 0, 0, 0.6)"
           }}
         />
       ) : (
