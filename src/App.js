@@ -76,19 +76,19 @@ const App = () => {
           }}
         >
           <Podium
-            position={get(ranking, "[1].position")}
+            position={2}
             name={get(ranking, "[1].name")}
             points={get(ranking, "[1].points")}
             picture={get(ranking, "[1].profilePicture")}
           />
           <Podium
-            position={get(ranking, "[0].position")}
+            position={1}
             name={get(ranking, "[0].name")}
             points={get(ranking, "[0].points")}
             picture={get(ranking, "[0].profilePicture")}
           />
           <Podium
-            position={get(ranking, "[2].position")}
+            position={3}
             name={get(ranking, "[2].name")}
             points={get(ranking, "[2].points")}
             picture={get(ranking, "[2].profilePicture")}
@@ -127,9 +127,9 @@ const App = () => {
         {[3, 4, 5, 6, 7, 8, 9].map(index => (
           <div style={{ marginTop: 30 }} key={index}>
             <RankingPosition
-              position={get(ranking, `[${index}].position`)}
-              name={get(ranking, `[${index}].name`)}
-              points={get(ranking, `[${index}].points`)}
+              position={get(ranking, `[${index}].position`, index + 1)}
+              name={get(ranking, `[${index}].name`, "Ainda não classificado")}
+              points={get(ranking, `[${index}].points`, 0)}
               picture={get(ranking, `[${index}].profilePicture`)}
             />
           </div>

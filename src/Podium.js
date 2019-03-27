@@ -79,9 +79,9 @@ const Podium = ({ position, name, points, picture }) => (
         fontWeight: "bold"
       }}
     >
-      {name}
+      {name || "Que tal você aqui?"}
       <br />
-      {points} pontos
+      {points > 0 && `${points} pontos`}
     </div>
   </div>
 );
