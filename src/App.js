@@ -14,7 +14,7 @@ const App = () => {
     setFetching(true);
     axios
       .get(
-        "https://api.flexge.com/public/reports/schools/Colégio do Salvador/ranking?from=2019-03-01&to=2019-03-30",
+        "https://api.flexge.com/public/reports/schools/Geduc/ranking?from=2019-03-01&to=2019-03-30",
         {
           headers: {
             "Content-Type": "application/json",
